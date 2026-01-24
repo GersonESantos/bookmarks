@@ -1,0 +1,17 @@
+{
+  "name": "bookmark-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "server",
+    "web",
+    "extension",
+    "shared"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev --workspace=server",
+    "dev:web": "npm run dev --workspace=web",
+    "dev:ext": "npm run dev --workspace=extension",
+    "build": "npm run build --workspaces"
+  }
+}

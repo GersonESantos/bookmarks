@@ -1,0 +1,19 @@
+{
+    "name": "extension",
+    "private": true,
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build && copy manifest.json dist\\manifest.json",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@bookmark/shared": "*"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.263",
+        "typescript": "^5.2.2",
+        "vite": "^5.2.0"
+    }
+}

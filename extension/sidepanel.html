@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookmark</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background-color: #f8f9fa;
+            color: #111;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .btn {
+            background-color: #9C64FB;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #8b5cf6;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .card {
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .tag-chip {
+            display: inline-block;
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="auth-view" class="hidden">
+        <div class="card">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label>Email</label>
+                <input type="email" id="email" required />
+                <label>Password</label>
+                <input type="password" id="password" required />
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p style="text-align: center; font-size: 12px; margin-top: 10px;">
+                Or <a href="#" id="signup-link">Sign up</a> anywhere
+            </p>
+        </div>
+    </div>
+
+    <div id="main-view" class="hidden">
+        <div class="card">
+            <h2>Add Bookmark</h2>
+            <form id="bookmark-form">
+                <label>URL</label>
+                <input type="text" id="bm-url" readonly />
+
+                <label>Title</label>
+                <input type="text" id="bm-title" />
+
+                <label>Description</label>
+                <textarea id="bm-desc" rows="2"></textarea>
+
+                <label>Tags (comma separated)</label>
+                <input type="text" id="bm-tags" placeholder="Work, To Read" />
+
+                <button type="submit" class="btn">Save Bookmark</button>
+            </form>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            <a href="http://localhost:5173/home" target="_blank" style="font-size: 12px; color: #9C64FB;">Open Web
+                App</a>
+            <button id="logout-btn"
+                style="background:none; border:none; color: #666; font-size: 12px; cursor: pointer; margin-left: 10px;">Logout</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/sidepanel.ts"></script>
+</body>
+
+</html>
