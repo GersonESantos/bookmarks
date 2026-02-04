@@ -1,40 +1,24 @@
-# bookmarks
+# Documentação da Rota de Autenticação (auth.ts)
+
+Este arquivo implementa as rotas de autenticação para a API, utilizando **Express**, **JWT (JSON Web Token)** e **Bcrypt** para segurança, além de **Zod** para validação de dados.
+
+## Dependências e Importações
+
+*   **express**: Framework web para Node.js. Importa `Router`, `Request` e `Response` para tipagem e roteamento.
+*   **jsonwebtoken (jwt)**: Biblioteca para criar e verificar tokens de autenticação.
+*   **bcryptjs**: Biblioteca para hash de senhas (criptografia unidirecional).
+*   **../models/User**: Importa o `UserModel`, que é a interface com o banco de dados (provavelmente MongoDB via Mongoose).
+*   **zod**: Biblioteca de validação de esquemas para garantir que os dados de entrada estejam corretos.
+
+## Configuração Inicial
+
+*   **router**: Instância do roteador do Express para definir as rotas.
+*   **SECRET_KEY**: Chave secreta usada para assinar os tokens JWT. Ela é lida das variáveis de ambiente (`process.env.JWT_SECRET`) ou usa um valor padrão ('supersecretkey') para desenvolvimento.
+
+## Validação (Schema Zod)
 
 ```typescript
-// Explicação do código no arquivo [auth.ts](http://_vscodecontentref_/0)
-
-### Importações
-- **[express](http://_vscodecontentref_/1)**: Utilizado para criar um enrutador ([Router](http://_vscodecontentref_/2)) e lidar com requisições HTTP.
-- **`jsonwebtoken`**: Para gerar e verificar tokens JWT.
-- **`bcryptjs`**: Para encriptar senhas.
-- **[UserModel](http://_vscodecontentref_/3)**: Modelo de usuário importado de `../models/User`.
-- **`zod`**: Biblioteca para validação e análise de dados.
-
-### Variáveis e Constantes
-- **[router](http://_vscodecontentref_/4)**: Instância de um enrutador do Express.
-- **[SECRET_KEY](http://_vscodecontentref_/5)**: Chave secreta para assinar os tokens JWT. Obtida das variáveis de ambiente ou usa um valor padrão.
-
-### Esquema de Validação
-- **[signupSchema](http://_vscodecontentref_/6)**: Define as regras para validar os dados de registro:
-  - [email](http://_vscodecontentref_/7): Deve ser um e-mail válido.
-  - [password](http://_vscodecontentref_/8): Deve ter pelo menos 6 caracteres.
-
-### Função Auxiliar
-- **[generateToken](http://_vscodecontentref_/9)**: Gera um token JWT com validade de 7 dias.
-
-### Rota `/signup`
-- **Método**: `POST`
-- **Fluxo**:
-  1. Valida os dados do corpo da requisição usando [signupSchema](http://_vscodecontentref_/10).
-  2. Verifica se o usuário já existe no banco de dados.
-  3. Se não existir, encripta a senha com [bcrypt](http://_vscodecontentref_/11) e cria um novo usuário.
-  4. Gera um token JWT para o novo usuário.
-  5. Configura um cookie HTTP ([auth_token](http://_vscodecontentref_/12)) com o token.
-  6. Retorna uma resposta com o token e os dados do usuário.
-
-### Tratamento de Erros
-- Se ocorrer um erro de validação ([ZodError](http://_vscodecontentref_/13)), ele é tratado especificamente.
-
-### Observações
-- O código está bem estruturado e utiliza boas práticas, como validação de entrada e encriptação de senhas.
-- A configuração do cookie inclui opções de segurança, como [httpOnly](http://_vscodecontentref_/14) e [secure](http://_vscodecontentref_/15).
+const signupSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+});
