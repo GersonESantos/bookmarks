@@ -13,6 +13,7 @@ const bookmarkSchema = new mongoose.Schema<Bookmark>({
     // Prompt lists BookmarkTag join table, so likely Normalized. 
     // In Mongo, referencing ObjectId is fine. I'll use ObjectId strings.
     savedFrom: { type: String, enum: ['web', 'extension'], default: 'web' },
+    status: { type: String, default: 'inicio' },
 }, { timestamps: true });
 
 export const BookmarkModel = mongoose.model<Bookmark>('Bookmark', bookmarkSchema);

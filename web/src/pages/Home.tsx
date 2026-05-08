@@ -12,6 +12,7 @@ interface Bookmark {
     tags: { _id: string, name: string }[];
     createdAt: string;
     source?: string;
+    status?: string;
 }
 
 export default function Home() {
@@ -62,6 +63,7 @@ export default function Home() {
                             <th className="p-4 font-medium">Title</th>
                             <th className="p-4 font-medium">URL</th>
                             <th className="p-4 font-medium">Tags</th>
+                            <th className="p-4 font-medium">Status</th>
                             <th className="p-4 font-medium">Date</th>
                             <th className="p-4 font-medium text-right">Actions</th>
                         </tr>
@@ -84,6 +86,9 @@ export default function Home() {
                                         ))}
                                     </div>
                                 </td>
+                                <td className="p-4 font-medium capitalize">
+                                    {bookmark.status || 'inicio'}
+                                </td>
                                 <td className="p-4 text-muted-foreground">
                                     {format(new Date(bookmark.createdAt), 'MMM d, yyyy')}
                                 </td>
@@ -94,7 +99,7 @@ export default function Home() {
                         ))}
                         {bookmarks.length === 0 && (
                             <tr>
-                                <td colSpan={5} className="p-4 text-center text-muted-foreground">No bookmarks found</td>
+                                <td colSpan={6} className="p-4 text-center text-muted-foreground">No bookmarks found</td>
                             </tr>
                         )}
                     </tbody>
