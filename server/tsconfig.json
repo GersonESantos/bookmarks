@@ -8,7 +8,12 @@
         "strict": true,
         "skipLibCheck": true,
         "outDir": "./dist",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "baseUrl": ".",
+        "paths": {
+            "@bookmark/shared": ["../shared/src"],
+            "@bookmark/shared/*": ["../shared/src/*"]
+        }
     },
     "include": [
         "src/**/*"

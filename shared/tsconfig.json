@@ -5,8 +5,10 @@
         "moduleResolution": "node",
         "declaration": true,
         "outDir": "./dist",
+        "rootDir": "./src",
         "strict": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "composite": true
     },
     "include": [
         "src/**/*"

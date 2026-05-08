@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@bookmark/shared": ["shared/src"],
+      "@bookmark/shared/*": ["shared/src/*"]
+    },
+    "composite": true,
+    "declaration": true
+  },
+  "references": [
+    { "path": "./shared/tsconfig.json" },
+    { "path": "./server/tsconfig.json" },
+    { "path": "./web/tsconfig.json" },
+    { "path": "./extension/tsconfig.json" }
+  ]
+}
